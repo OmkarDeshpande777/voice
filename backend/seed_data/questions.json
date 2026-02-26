@@ -1,0 +1,268 @@
+[
+  {
+    "category": "hr",
+    "difficulty": "easy",
+    "text": "Tell me about yourself.",
+    "expected_answer": "A brief professional summary covering background, skills, and career goals.",
+    "tips": "Keep it concise (2-3 minutes), focus on professional highlights, and tie it back to the role."
+  },
+  {
+    "category": "hr",
+    "difficulty": "medium",
+    "text": "What are your greatest strengths and weaknesses?",
+    "expected_answer": "Genuine strengths with examples; a real weakness with steps taken to improve it.",
+    "tips": "Be honest. Frame weaknesses as growth opportunities, not fatal flaws."
+  },
+  {
+    "category": "hr",
+    "difficulty": "medium",
+    "text": "Where do you see yourself in 5 years?",
+    "expected_answer": "Clear career goals that align with the company's growth opportunities.",
+    "tips": "Show ambition but also commitment to the role. Tailor to the company's trajectory."
+  },
+  {
+    "category": "hr",
+    "difficulty": "medium",
+    "text": "Describe a time when you had to work under pressure. How did you handle it?",
+    "expected_answer": "A specific situation using STAR method: Situation, Task, Action, Result.",
+    "tips": "Use real examples. Highlight problem-solving, time management, and resilience."
+  },
+  {
+    "category": "hr",
+    "difficulty": "medium",
+    "text": "Why do you want to work at this company?",
+    "expected_answer": "Knowledge of the company's mission, culture, and how the role aligns with career goals.",
+    "tips": "Research the company beforehand. Be specific — avoid generic answers."
+  },
+  {
+    "category": "hr",
+    "difficulty": "easy",
+    "text": "Why are you leaving your current job?",
+    "expected_answer": "Professional, forward-looking reasons such as new challenges, growth, or alignment with goals.",
+    "tips": "Never speak negatively about former employers. Focus on what you're moving toward."
+  },
+  {
+    "category": "hr",
+    "difficulty": "medium",
+    "text": "Describe a time you had a conflict with a coworker. How did you resolve it?",
+    "expected_answer": "STAR-based answer showing communication, empathy, and constructive conflict resolution.",
+    "tips": "Focus on resolution, not blame. Show emotional intelligence."
+  },
+  {
+    "category": "hr",
+    "difficulty": "hard",
+    "text": "Give an example of a time you showed leadership.",
+    "expected_answer": "A specific scenario where you took initiative, motivated others, and achieved a goal.",
+    "tips": "Leadership isn't just management. Informal influence counts too."
+  },
+  {
+    "category": "hr",
+    "difficulty": "easy",
+    "text": "How do you prioritize your work when you have multiple deadlines?",
+    "expected_answer": "A clear methodology like Eisenhower Matrix, time-blocking, or task management tools.",
+    "tips": "Mention real tools (Trello, Jira, spreadsheets) and give a concrete example."
+  },
+  {
+    "category": "hr",
+    "difficulty": "medium",
+    "text": "Tell me about a major failure and what you learned from it.",
+    "expected_answer": "Honest account of a setback with reflection on lessons learned and how you applied them.",
+    "tips": "Don't be defensive. Maturity and self-awareness matter more than the failure itself."
+  },
+  {
+    "category": "technical",
+    "difficulty": "medium",
+    "text": "Explain the difference between a process and a thread.",
+    "expected_answer": "A process is an independent program with its own memory space. A thread is a unit of execution within a process sharing the same memory. Threads are lighter and faster to create.",
+    "tips": "Mention context switching, memory sharing, and synchronization challenges."
+  },
+  {
+    "category": "technical",
+    "difficulty": "medium",
+    "text": "What is the difference between TCP and UDP?",
+    "expected_answer": "TCP is connection-oriented, reliable, and ensures ordered delivery. UDP is connectionless, faster, and suitable for real-time applications like video streaming.",
+    "tips": "Give use-case examples: TCP for HTTP, UDP for VoIP/gaming."
+  },
+  {
+    "category": "technical",
+    "difficulty": "hard",
+    "text": "Explain the SOLID principles in software design.",
+    "expected_answer": "Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion — each with a brief explanation.",
+    "tips": "Give brief code-level examples for each principle."
+  },
+  {
+    "category": "technical",
+    "difficulty": "medium",
+    "text": "What is a REST API and what are its key constraints?",
+    "expected_answer": "REST is an architectural style using stateless HTTP. Key constraints: stateless, client-server, cacheable, uniform interface, layered system.",
+    "tips": "Differentiate REST from SOAP. Mention HTTP verbs and status codes."
+  },
+  {
+    "category": "technical",
+    "difficulty": "hard",
+    "text": "What is the CAP theorem?",
+    "expected_answer": "In a distributed system, you can only guarantee two of three: Consistency, Availability, Partition Tolerance. Systems must choose a trade-off.",
+    "tips": "Give examples: HBase (CP), CouchDB (AP), traditional RDBMS (CA)."
+  },
+  {
+    "category": "technical",
+    "difficulty": "medium",
+    "text": "Explain how a hash table works and its time complexity.",
+    "expected_answer": "A hash table uses a hash function to map keys to buckets. Average O(1) for insert/search/delete. Collisions are handled by chaining or open addressing.",
+    "tips": "Discuss load factor, collision resolution, and worst-case O(n)."
+  },
+  {
+    "category": "technical",
+    "difficulty": "easy",
+    "text": "What is the difference between stack and heap memory?",
+    "expected_answer": "Stack stores local variables and function calls with automatic management (LIFO). Heap is used for dynamic memory allocation, managed manually or via GC.",
+    "tips": "Mention stack overflow and memory leaks. Relate to programming languages."
+  },
+  {
+    "category": "technical",
+    "difficulty": "hard",
+    "text": "Describe how a database index works and when you would use one.",
+    "expected_answer": "An index is a data structure (often B-tree) that speeds up data retrieval at the cost of extra storage and slower writes. Use on frequently queried columns.",
+    "tips": "Discuss B-tree, bitmap, and hash indexes. Mention trade-offs."
+  },
+  {
+    "category": "technical",
+    "difficulty": "medium",
+    "text": "What is the difference between synchronous and asynchronous programming?",
+    "expected_answer": "Synchronous code executes sequentially, blocking until completion. Asynchronous code allows other tasks to run while waiting for I/O, improving efficiency.",
+    "tips": "Mention async/await, callbacks, promises. Give a real-world I/O example."
+  },
+  {
+    "category": "technical",
+    "difficulty": "hard",
+    "text": "Explain microservices architecture and its trade-offs vs monolith.",
+    "expected_answer": "Microservices split functionality into independent deployable services. Benefits: scalability, independence. Trade-offs: complexity, distributed systems failures, network latency.",
+    "tips": "Discuss service discovery, API gateways, and when monolith is better."
+  },
+  {
+    "category": "viva",
+    "difficulty": "medium",
+    "text": "Explain the project you worked on recently. What was your contribution?",
+    "expected_answer": "Clear description of project scope, technology used, and specific personal contributions with quantifiable impact.",
+    "tips": "Use specific metrics. Focus on your role, not the team's work."
+  },
+  {
+    "category": "viva",
+    "difficulty": "hard",
+    "text": "If you could redesign your project from scratch, what would you do differently?",
+    "expected_answer": "Thoughtful reflection on architectural decisions, technology choices, or process improvements with justification.",
+    "tips": "Show critical thinking and learning. Discuss scalability, maintainability."
+  },
+  {
+    "category": "viva",
+    "difficulty": "medium",
+    "text": "What were the biggest technical challenges in your project and how did you overcome them?",
+    "expected_answer": "Specific technical problem with the debugging/resolution process and the outcome.",
+    "tips": "Demonstrate problem-solving ability. Mention failed attempts before the solution."
+  },
+  {
+    "category": "viva",
+    "difficulty": "easy",
+    "text": "What technologies or frameworks did you use and why did you choose them?",
+    "expected_answer": "Justification of technology choices based on project requirements, scalability, community support, and team expertise.",
+    "tips": "Compare alternatives briefly. Show you made informed decisions, not just defaults."
+  },
+  {
+    "category": "viva",
+    "difficulty": "hard",
+    "text": "How did you ensure the quality and reliability of your project?",
+    "expected_answer": "Discussion of testing strategy (unit, integration, e2e), CI/CD, code reviews, monitoring, and error handling.",
+    "tips": "Mention testing frameworks, coverage metrics, and production monitoring tools."
+  },
+  {
+    "category": "viva",
+    "difficulty": "medium",
+    "text": "How would your project scale to handle 10x more users?",
+    "expected_answer": "Identification of bottlenecks and proposed solutions: horizontal scaling, caching, database sharding, CDN, load balancing.",
+    "tips": "Think in layers: frontend, backend, database, infrastructure."
+  },
+  {
+    "category": "viva",
+    "difficulty": "easy",
+    "text": "Describe the architecture of your project.",
+    "expected_answer": "Clear explanation of system components, data flow, and how they interact (e.g., client-server, MVC, microservices).",
+    "tips": "Draw or describe a diagram mentally. Cover all layers end-to-end."
+  },
+  {
+    "category": "viva",
+    "difficulty": "hard",
+    "text": "What security considerations did you implement in your project?",
+    "expected_answer": "Authentication, authorization, input validation, HTTPS, SQL injection prevention, CSRF protection, secrets management.",
+    "tips": "Mention OWASP Top 10. Show awareness of attack vectors."
+  },
+  {
+    "category": "exam",
+    "difficulty": "medium",
+    "text": "What is the time complexity of QuickSort in the average and worst case?",
+    "expected_answer": "Average case: O(n log n). Worst case: O(n²) when pivot is always the smallest or largest element.",
+    "tips": "Explain why worst case happens and how randomized pivot selection mitigates it."
+  },
+  {
+    "category": "exam",
+    "difficulty": "easy",
+    "text": "What is Big O notation and why is it important?",
+    "expected_answer": "Big O describes the upper bound of an algorithm's time or space complexity as input grows. It helps compare algorithm efficiency.",
+    "tips": "Explain O(1), O(n), O(n²), O(log n) with simple examples."
+  },
+  {
+    "category": "exam",
+    "difficulty": "medium",
+    "text": "Explain the difference between BFS and DFS and when to use each.",
+    "expected_answer": "BFS explores level by level (uses queue), good for shortest path. DFS explores depth-first (uses stack/recursion), good for cycle detection and pathfinding.",
+    "tips": "Mention time/space complexity. Give graph traversal examples."
+  },
+  {
+    "category": "exam",
+    "difficulty": "hard",
+    "text": "What is dynamic programming and how does it differ from recursion?",
+    "expected_answer": "DP solves problems by breaking them into overlapping subproblems and storing results (memoization/tabulation) to avoid redundant computation.",
+    "tips": "Explain top-down (memoization) vs bottom-up (tabulation). Give Fibonacci or Knapsack as examples."
+  },
+  {
+    "category": "exam",
+    "difficulty": "medium",
+    "text": "What are the four pillars of Object-Oriented Programming?",
+    "expected_answer": "Encapsulation, Abstraction, Inheritance, Polymorphism — each with a brief definition.",
+    "tips": "Give concrete code examples for each. Explain benefits of each pillar."
+  },
+  {
+    "category": "exam",
+    "difficulty": "hard",
+    "text": "Explain the difference between deadlock and livelock.",
+    "expected_answer": "Deadlock: processes wait indefinitely for resources held by each other. Livelock: processes keep changing state in response to each other but make no progress.",
+    "tips": "Give the four Coffman conditions for deadlock. Mention prevention strategies."
+  },
+  {
+    "category": "exam",
+    "difficulty": "medium",
+    "text": "What is normalization in databases? Explain 1NF, 2NF, and 3NF.",
+    "expected_answer": "Normalization reduces redundancy. 1NF: atomic values. 2NF: no partial dependencies. 3NF: no transitive dependencies.",
+    "tips": "Give table examples for each normal form violation."
+  },
+  {
+    "category": "exam",
+    "difficulty": "easy",
+    "text": "What is the difference between a compiled and interpreted language?",
+    "expected_answer": "Compiled languages translate source code to machine code before execution (C, C++). Interpreted languages execute line by line at runtime (Python, JavaScript).",
+    "tips": "Mention JIT compilation as a middle ground (Java, .NET)."
+  },
+  {
+    "category": "exam",
+    "difficulty": "hard",
+    "text": "What is the difference between optimistic and pessimistic locking?",
+    "expected_answer": "Optimistic locking assumes conflicts are rare; validates at commit. Pessimistic locking prevents conflicts by locking data immediately.",
+    "tips": "Discuss use cases: optimistic for low contention, pessimistic for high contention."
+  },
+  {
+    "category": "exam",
+    "difficulty": "medium",
+    "text": "Explain what a binary search tree (BST) is and its operations.",
+    "expected_answer": "BST: left child < parent < right child. Operations: insert, search, delete — all O(h) where h is tree height. Balanced BST: O(log n).",
+    "tips": "Mention unbalanced worst case O(n). Discuss AVL and Red-Black trees."
+  }
+]

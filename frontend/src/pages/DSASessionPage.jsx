@@ -112,6 +112,8 @@ export default function DSASessionPage() {
                 await endDSA(session.id);
                 setFinished(true);
                 navigate(`/report/${session.id}`);
+            } else if (res.data.status === 'error') {
+                setError(res.data.message || 'Session interrupted. Please start a new session.');
             } else {
                 setQuestion(res.data.question);
             }

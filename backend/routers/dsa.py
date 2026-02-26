@@ -249,7 +249,26 @@ def end_dsa_session(
     _dsa_session_questions.pop(session_id, None)
 
     # Build report
-    return _build_dsa_report(db, session_id)
+    report_data = _build_dsa_report(db, session_id)
+
+    # Persist a FeedbackReport so DSA sessions appear with scores in history
+    from services.interview_service import get_feedback_report, save_feedback_report
+    existing_feedback = get_feedback_report(db, session_id)
+    if not existing_feedback:
+        avg_score = report_data.get("average_score", 0.0)
+        save_feedback_report(db, session_id, {
+            "overall_score": avg_score,
+            "strengths": ["Completed DSA challenge"] if report_data.get("questions_answered", 0) > 0 else [],
+            "weaknesses": [],
+            "suggestions": ["Review optimal approaches for each problem."],
+            "score_breakdown": {
+                "voice": 0,
+                "nlp": avg_score,
+                "facial": 0,
+            },
+        })
+
+    return report_data
 
 
 @router.get("/{session_id}/report")

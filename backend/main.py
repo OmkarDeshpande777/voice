@@ -10,6 +10,7 @@ from routers.auth import router as auth_router
 from routers.interviews import router as interviews_router
 from routers.questions import router as questions_router
 from routers.dsa import router as dsa_router
+from routers.resume import router as resume_router
 
 # Create FastAPI app
 app = FastAPI(
@@ -32,6 +33,7 @@ app.include_router(auth_router)
 app.include_router(interviews_router)
 app.include_router(questions_router)
 app.include_router(dsa_router)
+app.include_router(resume_router)
 
 
 @app.on_event("startup")
