@@ -14,9 +14,14 @@ export default function DashboardPage() {
             try {
                 const res = await getHistory();
                 setHistory(res.data);
-            } catch {
-                // If unauthorized, redirect to login
-                navigate('/login');
+            } catch (err) {
+                // Only redirect to login on auth errors (401/403)
+                if (err.response?.status === 401 || err.response?.status === 403) {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    navigate('/login');
+                }
+                // For other errors, just leave history empty
             } finally {
                 setLoading(false);
             }
@@ -85,6 +90,7 @@ export default function DashboardPage() {
                         <Link to="/interview/hr" className="btn btn-secondary">👔 HR Interview</Link>
                         <Link to="/interview/technical" className="btn btn-secondary">💻 Technical</Link>
                         <Link to="/interview/exam" className="btn btn-secondary">📝 Exam / Viva</Link>
+                        <Link to="/resume" className="btn btn-secondary">📄 Resume Interview</Link>
                     </div>
                     <div style={{ marginTop: '1rem' }}>
                         <Link to="/select" className="btn btn-primary">Choose Interview Type →</Link>

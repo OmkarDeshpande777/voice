@@ -3,6 +3,7 @@ from models.user import User
 from models.interview import InterviewSession, Question, Response
 from models.analysis import AnalysisResult, FeedbackReport
 from models.dsa import DSAQuestion, DSASubmission
+from models.resume import ResumeUpload
 
 __all__ = [
     "User",
@@ -13,5 +14,6 @@ __all__ = [
     "FeedbackReport",
     "DSAQuestion",
     "DSASubmission",
+    "ResumeUpload",
 ]
 

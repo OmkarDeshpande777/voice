@@ -34,6 +34,14 @@ const INTERVIEW_TYPES = [
         questions: '10 questions',
         difficulty: 'Mixed',
     },
+    {
+        id: 'resume',
+        icon: '📄',
+        title: 'Resume-Based',
+        description: 'Upload your resume and get personalized technical questions based on your skills and experience.',
+        questions: '5 questions',
+        difficulty: 'Personalized',
+    },
 ];
 
 export default function InterviewSelectPage() {
@@ -42,6 +50,8 @@ export default function InterviewSelectPage() {
     const handleSelect = (type) => {
         if (type === 'dsa') {
             navigate('/dsa');
+        } else if (type === 'resume') {
+            navigate('/resume');
         } else {
             navigate(`/interview/${type}`);
         }

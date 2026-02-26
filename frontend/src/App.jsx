@@ -9,6 +9,7 @@ import InterviewSelectPage from './pages/InterviewSelectPage';
 import InterviewSessionPage from './pages/InterviewSessionPage';
 import DSASessionPage from './pages/DSASessionPage';
 import ReportPage from './pages/ReportPage';
+import ResumeUploadPage from './pages/ResumeUploadPage';
 
 function Navbar() {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ function Navbar() {
 
       <div className="navbar-links">
         <Link to="/dashboard">Dashboard</Link>
+        <Link to="/resume">Resume</Link>
         <Link to="/select">Practice</Link>
       </div>
 
@@ -65,6 +67,7 @@ export default function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
         <Route path="/select" element={<ProtectedRoute><InterviewSelectPage /></ProtectedRoute>} />
+        <Route path="/resume" element={<ProtectedRoute><ResumeUploadPage /></ProtectedRoute>} />
         <Route path="/interview/:type" element={<ProtectedRoute><InterviewSessionPage /></ProtectedRoute>} />
         <Route path="/dsa" element={<ProtectedRoute><DSASessionPage /></ProtectedRoute>} />
         <Route path="/report/:sessionId" element={<ProtectedRoute><ReportPage /></ProtectedRoute>} />

@@ -7,27 +7,27 @@ echo.
 
 :: Start Backend API (port 8000)
 echo [1/5] Starting Backend API on port 8000...
-start "Backend API :8000" cmd /k "cd /d c:\Users\OWNER\Desktop\voice\backend && python -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload"
+start "Backend API :8000" cmd /k "cd /d c:\Document Local\Projects\Design Project\voice\backend && python -m uvicorn main:app --host 127.0.0.1 --port 8000 --reload"
 timeout /t 3 /nobreak >nul
 
 :: Start Voice Analysis Service (port 8001)
 echo [2/5] Starting Voice Analysis on port 8001...
-start "Voice Service :8001" cmd /k "cd /d c:\Users\OWNER\Desktop\voice\ai_services\voice_analysis && python -m uvicorn service:app --host 127.0.0.1 --port 8001 --reload"
+start "Voice Service :8001" cmd /k "cd /d c:\Document Local\Projects\Design Project\voice\ai_services\voice_analysis && python -m uvicorn service:app --host 127.0.0.1 --port 8001 --reload"
 timeout /t 2 /nobreak >nul
 
 :: Start NLP Analysis Service (port 8002)
 echo [3/5] Starting NLP Analysis on port 8002...
-start "NLP Service :8002" cmd /k "cd /d c:\Users\OWNER\Desktop\voice\ai_services\nlp_analysis && python -m uvicorn service:app --host 127.0.0.1 --port 8002 --reload"
+start "NLP Service :8002" cmd /k "cd /d c:\Document Local\Projects\Design Project\voice\ai_services\nlp_analysis && python -m uvicorn service:app --host 127.0.0.1 --port 8002 --reload"
 timeout /t 2 /nobreak >nul
 
 :: Start Facial Analysis Service (port 8003)
 echo [4/5] Starting Facial Analysis on port 8003...
-start "Facial Service :8003" cmd /k "cd /d c:\Users\OWNER\Desktop\voice\ai_services\facial_analysis && python -m uvicorn service:app --host 127.0.0.1 --port 8003 --reload"
+start "Facial Service :8003" cmd /k "cd /d c:\Document Local\Projects\Design Project\voice\ai_services\facial_analysis && python -m uvicorn service:app --host 127.0.0.1 --port 8003 --reload"
 timeout /t 2 /nobreak >nul
 
 :: Start Frontend Dev Server (port 5173)
 echo [5/5] Starting React Frontend on port 5173...
-start "Frontend :5173" cmd /k "cd /d c:\Users\OWNER\Desktop\voice\frontend && npx vite --host 127.0.0.1 --port 5173"
+start "Frontend :5173" cmd /k "cd /d c:\Document Local\Projects\Design Project\voice\frontend && npx vite --host 127.0.0.1 --port 5173"
 timeout /t 3 /nobreak >nul
 
 echo.

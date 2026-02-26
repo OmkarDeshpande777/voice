@@ -29,6 +29,8 @@ from services.interview_service import (
     save_feedback_report,
 )
 from services.question_engine import get_questions_for_session
+from services.resume_service import generate_resume_questions
+from models.resume import ResumeUpload
 from services.scoring_engine import (
     calculate_voice_overall,
     calculate_nlp_overall,
@@ -51,13 +53,79 @@ def start_interview(
 ):
     """Start a new interview session. Returns session info and the first question."""
     # Validate interview type
-    valid_types = ["hr", "technical", "viva", "exam", "dsa"]
+    valid_types = ["hr", "technical", "viva", "exam", "resume"]
+    if data.interview_type == "dsa":
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Use the /api/dsa/start endpoint for DSA sessions.",
+        )
     if data.interview_type not in valid_types:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"Invalid interview type. Must be one of: {valid_types}",
         )
 
+    # --- Resume-based interview: generate questions from user's latest resume ---
+    if data.interview_type == "resume":
+        latest_resume = (
+            db.query(ResumeUpload)
+            .filter(ResumeUpload.user_id == current_user.id)
+            .order_by(ResumeUpload.uploaded_at.desc())
+            .first()
+        )
+        if not latest_resume or not latest_resume.extracted_skills:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="No resume found. Please upload your resume first.",
+            )
+
+        resume_qs = generate_resume_questions(
+            skills=latest_resume.extracted_skills or [],
+            category=latest_resume.predicted_category or "General",
+            count=data.total_questions,
+        )
+
+        # Create session
+        session = create_session(
+            db,
+            user_id=current_user.id,
+            interview_type="resume",
+            total_questions=len(resume_qs),
+        )
+
+        # Save generated questions to DB so they have IDs
+        from models.interview import Question as QuestionModel
+        question_list = []
+        for rq in resume_qs:
+            q = QuestionModel(
+                category="resume",
+                difficulty=rq.get("difficulty", "medium"),
+                text=rq["text"],
+                tips=rq.get("tips"),
+            )
+            db.add(q)
+            db.flush()
+            question_list.append({
+                "id": q.id,
+                "category": q.category,
+                "difficulty": q.difficulty,
+                "text": q.text,
+                "tips": q.tips,
+            })
+        db.commit()
+
+        _session_questions[session.id] = question_list
+        first_q = question_list[0]
+        return {
+            "session": InterviewSessionOut.model_validate(session).model_dump(),
+            "question": {
+                **first_q,
+                "question_number": 1,
+                "total_questions": len(question_list),
+            },
+        }
+
+    # --- Standard interview types ---
     # Get questions for this category
     questions = get_questions_for_session(db, data.interview_type, data.total_questions)
     if not questions:
@@ -167,6 +235,13 @@ async def submit_response(
             "note": f"Analysis failed: {str(e)}",
         }
 
+    # Save the Whisper transcript back to the Response so the report page can display it
+    real_transcript = analysis_data.get("transcript", "") or transcript
+    if real_transcript and real_transcript.strip():
+        response.transcript = real_transcript.strip()
+        db.commit()
+        db.refresh(response)
+
     save_analysis_result(db, response.id, analysis_data)
 
     return {"status": "ok", "response_id": response.id}
@@ -187,6 +262,13 @@ def get_next_question(
 
     question_list = _session_questions.get(session_id, [])
     idx = session.current_question_index
+
+    # If session questions were lost (e.g. server restart), detect and report
+    if not question_list and session.status == "in_progress" and idx < session.total_questions:
+        return {
+            "status": "error",
+            "message": "Session interrupted (server restarted). Please start a new interview.",
+        }
 
     if idx >= len(question_list):
         return {"status": "completed", "message": "All questions answered"}

@@ -67,4 +67,18 @@ export const endDSA = (sessionId) =>
 export const getDSAReport = (sessionId) =>
   api.get(`/dsa/${sessionId}/report`);
 
+// Resume APIs
+export const uploadResume = (file) => {
+  const formData = new FormData();
+  formData.append('file', file);
+  return api.post('/resume/upload', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
+};
+
+export const getLatestResume = () => api.get('/resume/latest');
+
+export const getResumeQuestions = (count = 5) =>
+  api.get('/resume/questions', { params: { count } });
+
 export default api;

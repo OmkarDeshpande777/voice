@@ -354,6 +354,9 @@ export default function InterviewSessionPage() {
                 const endRes = await endInterview(session.id);
                 setFinished(true);
                 navigate(`/report/${session.id}`);
+            } else if (nextRes.data.status === 'error') {
+                // Session was interrupted (e.g. server restarted)
+                setError(nextRes.data.message || 'Session interrupted. Please start a new interview.');
             } else {
                 setQuestion(nextRes.data.question);
                 setTimer(0);
